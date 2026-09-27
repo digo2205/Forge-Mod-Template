@@ -1,0 +1,27 @@
+{
+    "_comment": "Advancements are Minecraft's built-in achievement/quest system. This one is intentionally minimal: it just grants itself the moment a player picks up a ruby for the first time, and shows up in the advancements screen as this mod's own little advancement tree.",
+    "display": {
+        "icon": {
+            "item": "examplemod:ruby"
+        },
+        "title": {
+            "translate": "advancements.examplemod.root.title"
+        },
+        "description": {
+            "translate": "advancements.examplemod.root.description"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": false
+    },
+    "criteria": {
+        "got_ruby": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    { "items": [ "examplemod:ruby" ] }
+                ]
+            }
+        }
+    }
+}

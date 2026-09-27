@@ -1,0 +1,6 @@
+{
+    "item.examplemod.ruby": "Ruby",
+    "itemGroup.examplemod": "Example Mod",
+    "advancements.examplemod.root.title": "Precious",
+    "advancements.examplemod.root.description": "Obtain a ruby"
+}

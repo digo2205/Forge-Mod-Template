@@ -1,0 +1,13 @@
+{
+    "_comment": "A shapeless recipe: the ingredients can be placed in any slot of the crafting grid, unlike a shaped recipe where position matters. This one exists purely as an example of the recipe JSON format; there is nothing special about amethyst shards being the ingredient here.",
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "item": "minecraft:amethyst_shard" },
+        { "item": "minecraft:amethyst_shard" },
+        { "item": "minecraft:amethyst_shard" }
+    ],
+    "result": {
+        "item": "examplemod:ruby",
+        "count": 1
+    }
+}

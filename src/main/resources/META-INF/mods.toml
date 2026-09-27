@@ -1,0 +1,33 @@
+# This file is how Forge discovers and identifies a mod. It is read before
+# any of your Java code runs, so if a mod fails to even show up in Forge's
+# mod list, this file (or its absence) is almost always the reason.
+# ${...} placeholders below are substituted with values from
+# gradle.properties automatically at build time.
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''${mod_description}'''
+
+# Declares that this mod requires Forge and Minecraft to be within specific
+# version ranges. If someone tries to run this mod on an incompatible
+# Minecraft or Forge version, this is what produces the "incompatible mod"
+# error screen instead of a confusing crash.
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"

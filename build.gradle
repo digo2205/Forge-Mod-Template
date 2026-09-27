@@ -1,0 +1,77 @@
+// This is the Gradle build script. Forge's own tooling (ForgeGradle, applied
+// below) hooks into this file to download the right version of Minecraft,
+// deobfuscate it, patch in Forge, and set up run configurations for you.
+// You will rarely need to touch this file beyond changing the version
+// numbers when you want to target a different Minecraft or Forge release.
+plugins {
+    id 'eclipse'
+    id 'idea'
+    // ForgeGradle is the Gradle plugin that does all the Minecraft-specific
+    // heavy lifting: patching, mapping deobfuscated names back to something
+    // readable, and generating the "runClient" / "runServer" tasks.
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+// The version of Java this mod is compiled against. Minecraft 1.20.1 runs on
+// Java 17, so the mod must target the same version or the game will refuse
+// to load it.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+version = '1.0.0'
+group = 'com.example.examplemod'
+archivesBaseName = 'examplemod'
+
+// "minecraft" is a special block added by ForgeGradle. It configures which
+// Minecraft version to build against and which mappings (the human-readable
+// names for Minecraft's otherwise obfuscated internal code) to use.
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+
+    // Each of these blocks becomes a runnable Gradle task, e.g.
+    // "gradlew runClient" launches a development client with the mod
+    // already loaded, which is the normal way to test changes while coding.
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                examplemod {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                examplemod {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    // Pulls in Forge itself for the specified Minecraft version. The
+    // "userdev" classifier gives access to Forge's development-time APIs.
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+}
+
+// Bakes mod metadata (version, mod id, etc.) into the built jar's manifest.
+// Forge reads some of this at load time.
+jar {
+    manifest {
+        attributes([
+            "Specification-Title"     : "examplemod",
+            "Specification-Vendor"    : "examplemod",
+            "Specification-Version"   : "1",
+            "Implementation-Title"    : project.name,
+            "Implementation-Version"  : project.jar.archiveVersion,
+            "Implementation-Vendor"   : "examplemod"
+        ])
+    }
+}

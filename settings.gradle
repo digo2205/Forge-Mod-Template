@@ -1,0 +1,11 @@
+// Gradle reads this file before build.gradle. Its job here is just to tell
+// Gradle where to find the ForgeGradle plugin, since that plugin is not on
+// Gradle's default plugin repository.
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.minecraftforge.net/' }
+    }
+}
+
+rootProject.name = 'examplemod'

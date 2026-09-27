@@ -1,0 +1,22 @@
+# Gradle build output and caches. These are regenerated automatically and
+# are large, so they should never be committed.
+.gradle/
+build/
+out/
+
+# The "run" directory is created by ForgeGradle's runClient/runServer tasks.
+# It contains a full development instance of Minecraft (saves, logs, config)
+# and should stay local to each developer's machine.
+run/
+
+# IDE-specific project files. Everyone's IDE generates these differently,
+# so committing them tends to cause conflicts for no real benefit.
+.idea/
+*.iml
+.vscode/
+.eclipse/
+bin/
+
+# OS-specific junk files.
+.DS_Store
+Thumbs.db
